@@ -22,8 +22,9 @@ class Solution(object):
             profit = max(sellingProfit, cooldown)
             
         return profit
-    
-    return dfs(True, 0)
+
+
+dfs(True, 0)
 
         
 
