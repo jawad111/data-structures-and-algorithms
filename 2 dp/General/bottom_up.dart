@@ -1,3 +1,5 @@
+// Time: O(n * m), Space: 0(m), where m is num of cols
+
 // Returns Total number of Paths from top to bottom in a two dimentional grid
 int countPaths(int rows, int columns){
   List<int> previousRow = List.generate(columns, (_)=> 0);
