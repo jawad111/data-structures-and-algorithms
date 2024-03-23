@@ -24,8 +24,8 @@ def minimumSpanningTree(edges):
         heapq.heappush(heap_values, [w, 'A', neighbour])
 
 
-    while len(visited) < len(adj): # length of edges in mst must be smaller that total nodes (to avoid cycle)
-
+    #while len(visited) < len(adj): # length of edges in mst must be smaller that total nodes (to avoid cycle)
+    while len(heap_values) != 0:
         w, n1, n2 = heapq.heappop(heap_values)
 
         if n2 not in visited:
