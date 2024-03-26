@@ -4,28 +4,17 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        return self.climb(n, 0, {})
 
-        cache = {}
-        return self.foo(n, 0, 0, cache)
 
-    def foo(self, total_steps, current_step, total, cache):
-
-        total = total + current_step 
-
-        if(total == total_steps):
-            return 1
-
-        if(total > total_steps):
-            return 0
+    def climb(self, total_stairs, stair, cache):
+        if(stair == total_stairs):
+             return 1
+        if(stair > total_stairs):
+             return 0
+        if(stair in cache):
+            return cache[stair]
         
-        if (total < total_steps):
+        cache[stair]= self.climb(total_stairs, stair + 1, cache) + self.climb(total_stairs, stair + 2, cache)
 
-            if((current_step, total) in cache):
-                return cache[(current_step, total)]
-
-
-            cache[(current_step, total)] = self.foo(total_steps, 1, total, cache) + self.foo(total_steps, 2, total, cache)
-
-            
-        return cache[(current_step, total)]
-        
+        return cache[stair]

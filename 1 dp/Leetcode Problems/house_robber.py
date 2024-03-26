@@ -1,18 +1,22 @@
-def rob(nums, total, i):
-    if(i > len(nums) - 1):
-        return total
-
-    print(nums[i])
-    
-    total =  rob(nums, nums[i] + total, i + 2)
-
-    return total
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        return self.rob_houses(nums, 0, {})
 
 
- 
-nums = [1,3,1]
-i = 0
-total = 0
+    def rob_houses(self, houses, i, cache):
 
-print(max(rob(nums, total, 0), rob(nums, total, i + 1))
-)
+        if(i > len(houses) - 1):
+            return 0
+        
+        if(i in cache):
+            return cache[i]
+
+
+        cache[i] = max(houses[i] + self.rob_houses(houses, i + 2, cache), self.rob_houses(houses, i + 1, cache))
+
+        return cache[i]
+                
